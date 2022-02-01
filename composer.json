@@ -1,0 +1,29 @@
+{
+    "name": "coral-media/security-bundle",
+    "description": "The ISG security bundle.",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Rafael Ernesto Espinosa Santiesteban <@rernesto>",
+            "email": "rernesto.espinosa@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "CoralMedia\\Bundle\\SecurityBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CoralMedia\\Bundle\\SecurityBundle\\Test\\": "tests/"
+        }
+    },
+    "require": {
+        "php": "^7.4|^8.0",
+        "lexik/jwt-authentication-bundle": "^2.14",
+        "gesdinet/jwt-refresh-token-bundle": "^1.0"
+    },
+    "require-dev": {
+        "symfony/phpunit-bridge": "^5.3"
+    }
+}

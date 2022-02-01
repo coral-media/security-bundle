@@ -1,0 +1,9 @@
+CoralMedia\Bundle\SecurityBundle\Entity\User:
+    attributes:
+        id: { groups: ['user:read', 'user:write'] }
+        email: { groups: ['user:read', 'user:write'] }
+        roles: { groups: ['user:read', 'user:write'] }
+        createdAt: { groups: ['user:read'] }
+        updatedAt: { groups: ['user:read'] }
+        password: { groups: ['user:write'] }
+        plainPassword: { groups: ['user:write'], serialized_name: 'password' }

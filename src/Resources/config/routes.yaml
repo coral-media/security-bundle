@@ -1,0 +1,11 @@
+controllers:
+    resource: ../../Controller/
+    type: annotation
+
+api_login_check:
+    path: /api/security/token
+    methods: ['POST']
+
+gesdinet_jwt_refresh_token:
+    path:       /api/security/token/refresh
+    controller: gesdinet.jwtrefreshtoken::refresh
