@@ -18,7 +18,7 @@ services:
         exclude:
             - '../../DependencyInjection/'
             - '../../Entity/'
-            - '../../SecurityBundle.php'
+            - '../../CoralMediaSecurityBundle.php'
             - '../../Tests/'
 
     # controllers are imported separately to make sure services can be injected
