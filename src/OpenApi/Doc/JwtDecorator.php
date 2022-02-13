@@ -59,11 +59,24 @@ class JwtDecorator implements OpenApiFactoryInterface
             ],
         ]);
 
+        $schemas['Token-Check'] = new ArrayObject([
+            'type' => 'object',
+            'properties' => [
+                'token' => [
+                    'type' => 'string',
+                    'example' => 'token here',
+                ],
+            ],
+        ]);
+
         $pathItem = $this->getToken();
         $openApi->getPaths()->addPath('/api/security/token', $pathItem);
 
         $pathItem = $this->refreshToken();
         $openApi->getPaths()->addPath('/api/security/token/refresh', $pathItem);
+
+        $pathItem = $this->checkAuthToken();
+        $openApi->getPaths()->addPath('/api/security/token/check', $pathItem);
 
         return $openApi;
     }
@@ -142,6 +155,47 @@ class JwtDecorator implements OpenApiFactoryInterface
                         'application/json' => [
                             'schema' => [
                                 '$ref' => '#/components/schemas/Token-Refresh',
+                            ],
+                        ],
+                    ]),
+                ),
+            ),
+        );
+    }
+
+    private function checkAuthToken(): Model\PathItem
+    {
+        return new Model\PathItem(
+            'JWT Check Auth Token',
+            null,
+            null,
+            null,
+            null,
+            new Model\Operation(
+                'checkAuthTokenItem',
+                ['Token'],
+                [
+                    '202' => [
+                        'description' => 'Check auth JWT token',
+                        'content' => [
+                            'application/json' => [
+                                'schema' => [
+                                    '$ref' => '#/components/schemas/Token-Check',
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+                'Check auth JWT token.',
+                '',
+                null,
+                [],
+                new Model\RequestBody(
+                    $description = 'Check auth JWT token',
+                    $content = new ArrayObject([
+                        'application/json' => [
+                            'schema' => [
+                                '$ref' => '#/components/schemas/Token-Check',
                             ],
                         ],
                     ]),
