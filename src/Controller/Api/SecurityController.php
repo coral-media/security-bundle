@@ -28,8 +28,7 @@ class SecurityController extends AbstractController
         Request $request,
         EventDispatcherInterface $dispatcher,
         TokenStorageInterface $tokenStorage
-    ): JsonResponse
-    {
+    ): JsonResponse {
         $logoutEvent = new LogoutEvent($request, $tokenStorage->getToken());
         $dispatcher->dispatch($logoutEvent, LogoutEvent::class);
 
