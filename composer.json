@@ -1,6 +1,6 @@
 {
     "name": "coral-media/security-bundle",
-    "description": "The ISG security bundle.",
+    "description": "The security bundle.",
     "version": "0.1.0",
     "license": "MIT",
     "authors": [

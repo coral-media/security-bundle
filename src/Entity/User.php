@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace CoralMedia\Bundle\SecurityBundle\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
+use CoralMedia\Bundle\FrameworkBundle\OpenApi\Orm\Filter\SenchaExtJsSearchFilter;
 use CoralMedia\Bundle\SecurityBundle\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
@@ -26,13 +28,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     protected ?int $id = null;
 
     /**
-     * @ORM\Column(type="string", length=180, unique=true)
      * @var string
+     * @ORM\Column(type="string", length=180, unique=true)
+     * @ApiFilter(SenchaExtJsSearchFilter::class, strategy="partial")
      */
     protected string $email;
 
     /**
      * @ORM\Column(type="json")
+     * @ApiFilter(SenchaExtJsSearchFilter::class, strategy="partial")
      */
     protected array $roles = [];
 
